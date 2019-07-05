@@ -105,8 +105,7 @@ def Register():
     
 
     Register = ttk.Button(RightFrame, text='Register', width=25, command=RegisterToDataBase)
-    Register.place(x=25, y=200)
-    
+    Register.place(x=25, y=200)    
     #Removendo tela de cadastro
     def BackToLogin():
         NomeLabel.place(x=5000)
