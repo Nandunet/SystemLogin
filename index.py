@@ -19,20 +19,20 @@ logo = PhotoImage(file='login.png')
 logo2 = PhotoImage(file='login3.png')
 
 #==========Widgets===========#
-LeftFrame = Frame(jan, width='200', height='300', bg='MIDNIGHTBLUE', relief='raise')
+LeftFrame =Frame(jan, width='200', height='300', bg='MIDNIGHTBLUE', relief='raise')
 LeftFrame.pack(side=LEFT)
 
-RightFrame = Frame(jan, width='395', height='300', bg='MIDNIGHTBLUE', relief='raise')
+RightFrame =Frame(jan, width='395', height='300', bg='MIDNIGHTBLUE', relief='raise')
 RightFrame.pack(side=RIGHT)
 
-logoLabel = Label(LeftFrame, image=logo, bg='MIDNIGHTBLUE')
+logoLabel =Label(LeftFrame, image=logo, bg='MIDNIGHTBLUE')
 logoLabel.place(x=40, y=20)
 
-logo2Label = Label(LeftFrame, image=logo2, bg='MIDNIGHTBLUE')
+logo2Label =Label(LeftFrame, image=logo2, bg='MIDNIGHTBLUE')
 logo2Label.place(x=40, y=170)
 
 #==========Login===========#
-UserLabel = Label(RightFrame, text='Username: ',font=('Century Gothic', 20),bg='MIDNIGHTBLUE',fg='white')
+UserLabel =Label(RightFrame, text='Username: ',font=('Century Gothic', 20),bg='MIDNIGHTBLUE',fg='white')
 UserLabel.place(x=20, y=81)
 
 UserEntry = ttk.Entry(RightFrame, width=31)
@@ -46,13 +46,13 @@ PassEntry = ttk.Entry(RightFrame,width=32,show='*')
 PassEntry.place(x=158, y=146)
 
 def Login():
-    User = UseEntry.get()
-    Pass = Passentry.get()    
+    User =UserEntry.get()
+    Pass =PassEntry.get()    
     DataBase.cursor.execute("""
     SELECT * FROM Users
     WHERE (User = ? and Password = ?)                                             
      """,(User,Pass))
-    print('Selecionou'
+    print('Selecionou')
     VerifyLogin = DataBase.cursor.fetchone()
     if (User in VerifyLogin and Pass in VerifyLogin):
         messagebox.showinfo(title='Login Info', message='Acesso Confirmado!')
@@ -66,7 +66,8 @@ loginButton.place(x=25, y=200)
 def Register():
     #removendo widgets de login
     loginButton.place(x=5000)
-    RegisterButton.place(x=5000)
+    RegisterButton.place(x=5000s)
+    
     #alinhando novas posições para tela cadastro
     UserLabel.place(x=18, y=90)
     UserEntry.place(x=162, y=103)
@@ -91,22 +92,22 @@ def Register():
         Name = NomeEntry.get()
         Email = EmailEntry.get()
         User = UserEntry.get()
-        Pass = PassEntry.get(
-        
-        if (Name =='' and Email=='' and User=='' and Pass==''):
-            Messagebox.showerror(title='Register Error', message='Preencha todos os campos')
+        Pass = PassEntry.get()
+
+        if(Name=='' and Email=='' and User=='' and Pass==''):
+            messagebox.showerror(title='Register Error', message='Preencha todos os campos')
         else:     
             DataBase.cursor.execute("""
             INSERT INTO Users(Name, Email, User, Password) VALUES(?, ?, ?, ?)
             """,(Name,Email,User,Pass))
             DataBase.conn.commit()
             messagebox.showinfo(title='Register Info', message='Registro Efetuado Com Sucesso!')
+    
 
     Register = ttk.Button(RightFrame, text='Register', width=25, command=RegisterToDataBase)
     Register.place(x=25, y=200)
     
     #Removendo tela de cadastro
-
     def BackToLogin():
         NomeLabel.place(x=5000)
         NomeEntry.place(x=5000)
