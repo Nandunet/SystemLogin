@@ -66,7 +66,7 @@ loginButton.place(x=25, y=200)
 def Register():
     #removendo widgets de login
     loginButton.place(x=5000)
-    RegisterButton.place(x=5000s)
+    RegisterButton.place(x=5000)
     
     #alinhando novas posições para tela cadastro
     UserLabel.place(x=18, y=90)
